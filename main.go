@@ -101,7 +101,13 @@ func (r Running) Calories() float64 {
 // TrainingInfo возвращает структуру InfoMessage с информацией о проведенной тренировке.
 // Это переопределенный метод TrainingInfo() из Training.
 func (r Running) TrainingInfo() InfoMessage {
-	return r.TrainingInfo()
+	return InfoMessage{TrainingType: r.TrainingType,
+		Duration: r.Duration,
+		Distance: r.distance(),
+		Speed:    r.meanSpeed(),
+		Calories: r.Calories(),
+	}
+
 }
 
 // Константы для расчета потраченных килокалорий при ходьбе.
